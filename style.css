@@ -1,56 +1,118 @@
+/* =====================================================
+   ANIMACIÓN NEON
+===================================================== */
 @keyframes neon-glow {
-  0%   { border-color: #D94A3F; box-shadow: 0 0 15px #D94A3F; }
-  12%  { border-color: #C1272D; box-shadow: 0 0 15px #C1272D; }
-  24%  { border-color: #A6192E; box-shadow: 0 0 15px #A6192E; }
-  36%  { border-color: #82001F; box-shadow: 0 0 15px #82001F; }
-  48%  { border-color: #B3B3B3; box-shadow: 0 0 15px #B3B3B3; }
-  60%  { border-color: #D9D9D9; box-shadow: 0 0 15px #D9D9D9; }
-  72%  { border-color: #F2E9DC; box-shadow: 0 0 15px #F2E9DC; }
-  84%  { border-color: #FAF7F0; box-shadow: 0 0 15px #FAF7F0; }
-  100% { border-color: #D94A3F; box-shadow: 0 0 15px #D94A3F; }
+  0% {
+    border-color: #D94A3F;
+    box-shadow: 0 0 15px #D94A3F;
+  }
+
+  12% {
+    border-color: #C1272D;
+    box-shadow: 0 0 15px #C1272D;
+  }
+
+  24% {
+    border-color: #A6192E;
+    box-shadow: 0 0 15px #A6192E;
+  }
+
+  36% {
+    border-color: #82001F;
+    box-shadow: 0 0 15px #82001F;
+  }
+
+  48% {
+    border-color: #B3B3B3;
+    box-shadow: 0 0 15px #B3B3B3;
+  }
+
+  60% {
+    border-color: #D9D9D9;
+    box-shadow: 0 0 15px #D9D9D9;
+  }
+
+  72% {
+    border-color: #F2E9DC;
+    box-shadow: 0 0 15px #F2E9DC;
+  }
+
+  84% {
+    border-color: #FAF7F0;
+    box-shadow: 0 0 15px #FAF7F0;
+  }
+
+  100% {
+    border-color: #D94A3F;
+    box-shadow: 0 0 15px #D94A3F;
+  }
 }
 
-html, body {
+/* =====================================================
+   RESET Y BASE
+===================================================== */
+html,
+body {
   margin: 0;
   padding: 0;
   width: 100%;
   height: 100%;
-  font-family: Arial, sans-serif;
+  font-family: 'Arial', sans-serif;
   background-color: #000;
-  overflow-x: hidden;
+  overflow-x: hidden; /* evita scroll horizontal */
 }
 
+/* =====================================================
+   SECCIÓN PRINCIPAL
+===================================================== */
 .seccion-inicial {
   position: relative;
+  min-height: 100vh;
+  width: 100%;
+
   background-image: url('/IXTEC digital OFICIAL/IMAGENES/FONDONUBES.png');
   background-size: cover;
   background-position: center;
-  min-height: 100vh;
+  background-repeat: no-repeat;
+
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
+
   color: white;
-  overflow: hidden;
+  overflow: hidden; /* evita que hijos absolutos generen scroll */
 }
 
-/* Fondo decorativo */
+/* =====================================================
+   IMAGEN DE FONDO CENTRAL
+===================================================== */
 .imagen-fondo-central {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+
   width: 80vw;
   max-width: 600px;
+  height: auto;
+
   opacity: 0.5;
-  z-index: 1;
+  z-index: 0.5;
   pointer-events: none;
 }
 
+/* =====================================================
+   LOGOS
+===================================================== */
 .logo-superior {
   position: absolute;
   top: 20px;
   left: 20px;
+
   width: 200px;
+  height: auto;
+
   z-index: 10;
 }
 
@@ -58,10 +120,16 @@ html, body {
   position: absolute;
   bottom: 20px;
   right: 20px;
+
   width: 160px;
+  height: auto;
+
   z-index: 10;
 }
 
+/* =====================================================
+   CONTENIDO CENTRAL
+===================================================== */
 .contenido-central {
   display: flex;
   flex-direction: column;
@@ -69,143 +137,33 @@ html, body {
   z-index: 5;
 }
 
+.imagen-central {
+  width: 150px;
+  height: auto;
+  margin-bottom: 30px;
+}
+
+/* =====================================================
+   LOGIN CONTAINER
+===================================================== */
 .login-container {
+  position: relative;
   width: 350px;
   height: 60px;
+  overflow: hidden;
+
   border-radius: 15px;
   border: 2px solid #D94A3F;
-  animation: neon-glow 10s linear infinite;
+
   transition: all 0.5s ease;
-  overflow: hidden;
+  animation: neon-glow 10s linear infinite;
+  box-shadow: 0 0 15px #D94A3F;
+
+  z-index: 0;
 }
 
 .login-container:hover {
   height: 400px;
 }
 
-.login-box {
-  background: #111;
-  padding: 40px;
-  border-radius: 12px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-}
-
-.login-title {
-  font-size: 28px;
-  position: absolute;
-  top: 30%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  transition: all 0.3s ease;
-}
-
-.login-container:hover .login-title {
-  position: relative;
-  transform: none;
-  margin-bottom: 20px;
-}
-
-.login-content {
-  opacity: 0;
-  height: 0;
-  overflow: hidden;
-  transition: all 0.4s ease;
-  width: 100%;
-}
-
-.login-container:hover .login-content {
-  opacity: 1;
-  height: auto;
-  margin-top: 20px;
-}
-
-.input-group {
-  width: 100%;
-  margin-bottom: 20px;
-}
-
-.input-group input {
-  width: 100%;
-  padding: 14px;
-  background: #222;
-  border: 1.5px solid #333;
-  border-radius: 8px;
-  color: white;
-}
-
-.login-btn {
-  width: 100%;
-  padding: 14px;
-  background: #D94A3F;
-  border: none;
-  color: white;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.links {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  margin-top: 20px;
-}
-
-/* =========================
-   📱 VISTA MÓVIL
-   ========================= */
-@media (max-width: 768px) {
-
-  .logo-superior {
-    width: 120px;
-    top: 10px;
-    left: 10px;
-  }
-
-  .imagen-inferior {
-    display: none;
-  }
-
-  .imagen-fondo-central {
-    width: 95vw;
-    opacity: 0.25;
-  }
-
-  .contenido-central {
-    width: 100%;
-    padding: 20px;
-  }
-
-  .login-container {
-    width: 100%;
-    height: auto;
-    animation: none;
-  }
-
-  .login-container:hover {
-    height: auto;
-  }
-
-  .login-title {
-    position: relative;
-    transform: none;
-    margin-bottom: 20px;
-    font-size: 24px;
-  }
-
-  .login-content {
-    opacity: 1;
-    height: auto;
-    margin-top: 20px;
-    overflow: visible;
-  }
-
-  .links {
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-  }
-}
+/* Glow exterior*
