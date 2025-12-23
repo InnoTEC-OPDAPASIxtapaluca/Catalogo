@@ -1,151 +1,6 @@
-/* =========================
-   ANIMACIONES
-   ========================= */
-@keyframes neon-glow {
-  0%   { border-color: #D94A3F; box-shadow: 0 0 15px #D94A3F; }
-  12%  { border-color: #C1272D; box-shadow: 0 0 15px #C1272D; }
-  24%  { border-color: #A6192E; box-shadow: 0 0 15px #A6192E; }
-  36%  { border-color: #82001F; box-shadow: 0 0 15px #82001F; }
-  48%  { border-color: #B3B3B3; box-shadow: 0 0 15px #B3B3B3; }
-  60%  { border-color: #D9D9D9; box-shadow: 0 0 15px #D9D9D9; }
-  72%  { border-color: #F2E9DC; box-shadow: 0 0 15px #F2E9DC; }
-  84%  { border-color: #FAF7F0; box-shadow: 0 0 15px #FAF7F0; }
-  100% { border-color: #D94A3F; box-shadow: 0 0 15px #D94A3F; }
-}
-
-/* =========================
-   RESET
-   ========================= */
-html, body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  font-family: Arial, sans-serif;
-  background-color: #000;
-  overflow-x: hidden;
-}
-
-/* =========================
-   SECCIÓN PRINCIPAL
-   ========================= */
-.seccion-inicial {
-  position: relative;
-  background-image: url('/IXTEC digital OFICIAL/IMAGENES/FONDONUBES.png');
-  background-size: cover;
-  background-position: center;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  overflow: hidden;
-}
-
-/* =========================
-   DECORACIÓN
-   ========================= */
-.imagen-fondo-central {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80vw;
-  max-width: 600px;
-  opacity: 0.5;
-  z-index: 1;
-  pointer-events: none;
-}
-
-.logo-superior {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  width: 200px;
-  z-index: 10;
-}
-
-.imagen-inferior {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  width: 160px;
-  z-index: 10;
-}
-
-/* =========================
-   CONTENIDO CENTRAL
-   ========================= */
-.contenido-central {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  z-index: 5;
-}
-
-/* =========================
-   LOGIN (PC)
-   ========================= */
-.login-container {
-  width: 350px;
-  height: 60px;
-  border-radius: 15px;
-  border: 2px solid #D94A3F;
-  animation: neon-glow 10s linear infinite;
-  transition: all 0.5s ease;
-  overflow: hidden;
-}
-
-.login-container:hover {
-  height: 400px;
-}
-
-.login-box {
-  background: #111;
-  padding: 40px;
-  border-radius: 12px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-}
-
-.login-title {
-  font-size: 28px;
-  position: absolute;
-  top: 30%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  transition: all 0.3s ease;
-  text-align: center;
-}
-
-.login-container:hover .login-title {
-  position: relative;
-  transform: none;
-  margin-bottom: 20px;
-}
-
-.login-content {
-  opacity: 0;
-  height: 0;
-  overflow: hidden;
-  transition: all 0.4s ease;
-  width: 100%;
-}
-
-.login-container:hover .login-content {
-  opacity: 1;
-  height: auto;
-  margin-top: 20px;
-}
-
-/* =========================
-   📱 VISTA MÓVIL
-   ========================= */
 @media (max-width: 768px) {
 
-  /* Logos separados */
+  /* ================= LOGOS ================= */
   .logo-superior,
   .imagen-inferior {
     position: fixed;
@@ -164,49 +19,62 @@ html, body {
     bottom: auto;
   }
 
-  /* Espacio superior */
+  /* Espacio para logos */
   .contenido-central {
     width: 100%;
     padding: 20px;
     margin-top: 90px;
   }
 
-  /* Login cerrado por defecto */
+  /* ================= LOGIN ================= */
+
+  /* Mantiene diseño neon */
   .login-container {
     width: 100%;
     height: 60px;
-    animation: none;
-    background: rgba(0, 0, 0, 0.2);
-    border-color: rgba(217, 74, 63, 0.6);
+    animation: neon-glow 10s linear infinite;
   }
 
-  /* 🔑 Se abre SOLO al tocar */
+  /* Se abre solo al tocar */
   .login-container:focus-within {
     height: auto;
   }
 
-  /* Contenido oculto */
+  /* Contenido cerrado */
   .login-content {
     opacity: 0;
     height: 0;
     overflow: hidden;
+    transition: all 0.4s ease;
   }
 
-  /* Mostrar contenido al hacer tap */
+  /* Contenido visible al tap */
   .login-container:focus-within .login-content {
     opacity: 1;
     height: auto;
     margin-top: 20px;
   }
 
-  .login-container:focus-within .login-title {
-    position: relative;
-    transform: none;
-    margin-bottom: 20px;
+  /* Título */
+  .login-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     font-size: 24px;
   }
 
+  .login-container:focus-within .login-title {
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: none;
+    margin-bottom: 20px;
+  }
+
+  /* 👇 OPACIDAD SOLO AL CUADRO INTERNO */
   .login-box {
-    background: rgba(17, 17, 17, 0.2);
+    background: rgba(17, 17, 17, 0.2); /* 20% */
+    backdrop-filter: blur(6px);       /* opcional pero recomendado */
   }
 }
