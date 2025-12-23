@@ -346,3 +346,10 @@ html, body {
   border: none;
   display: block;
 }
+
+/*PC*/
+@media (min-width: 768px) {
+  .container {
+     max-width: 700px;
+  }
+}
