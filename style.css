@@ -1,9 +1,164 @@
+@keyframes neon-glow {
+  0%   { border-color: #D94A3F; box-shadow: 0 0 15px #D94A3F; }
+  12%  { border-color: #C1272D; box-shadow: 0 0 15px #C1272D; }
+  24%  { border-color: #A6192E; box-shadow: 0 0 15px #A6192E; }
+  36%  { border-color: #82001F; box-shadow: 0 0 15px #82001F; }
+  48%  { border-color: #B3B3B3; box-shadow: 0 0 15px #B3B3B3; }
+  60%  { border-color: #D9D9D9; box-shadow: 0 0 15px #D9D9D9; }
+  72%  { border-color: #F2E9DC; box-shadow: 0 0 15px #F2E9DC; }
+  84%  { border-color: #FAF7F0; box-shadow: 0 0 15px #FAF7F0; }
+  100% { border-color: #D94A3F; box-shadow: 0 0 15px #D94A3F; }
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: Arial, sans-serif;
+  background-color: #000;
+  overflow-x: hidden;
+}
+
+.seccion-inicial {
+  position: relative;
+  background-image: url('/IXTEC digital OFICIAL/IMAGENES/FONDONUBES.png');
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  overflow: hidden;
+}
+
+/* Fondo decorativo */
+.imagen-fondo-central {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80vw;
+  max-width: 600px;
+  opacity: 0.5;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.logo-superior {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 200px;
+  z-index: 10;
+}
+
+.imagen-inferior {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 160px;
+  z-index: 10;
+}
+
+.contenido-central {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 5;
+}
+
+.login-container {
+  width: 350px;
+  height: 60px;
+  border-radius: 15px;
+  border: 2px solid #D94A3F;
+  animation: neon-glow 10s linear infinite;
+  transition: all 0.5s ease;
+  overflow: hidden;
+}
+
+.login-container:hover {
+  height: 400px;
+}
+
+.login-box {
+  background: #111;
+  padding: 40px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.login-title {
+  font-size: 28px;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease;
+}
+
+.login-container:hover .login-title {
+  position: relative;
+  transform: none;
+  margin-bottom: 20px;
+}
+
+.login-content {
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  width: 100%;
+}
+
+.login-container:hover .login-content {
+  opacity: 1;
+  height: auto;
+  margin-top: 20px;
+}
+
+.input-group {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 14px;
+  background: #222;
+  border: 1.5px solid #333;
+  border-radius: 8px;
+  color: white;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 14px;
+  background: #D94A3F;
+  border: none;
+  color: white;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.links {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 20px;
+}
+
 /* =========================
    📱 VISTA MÓVIL
    ========================= */
 @media (max-width: 768px) {
 
-  /* Logos */
   .logo-superior {
     width: 120px;
     top: 10px;
@@ -11,44 +166,36 @@
   }
 
   .imagen-inferior {
-    display: none; /* estorba en móvil */
+    display: none;
   }
 
-  /* Fondo central */
   .imagen-fondo-central {
     width: 95vw;
     opacity: 0.25;
   }
 
-  /* Contenedor central */
   .contenido-central {
     width: 100%;
     padding: 20px;
   }
 
-  /* LOGIN */
   .login-container {
     width: 100%;
-    height: auto;              /* 🔑 no animación hover */
-    animation: none;           /* opcional: ahorra recursos */
+    height: auto;
+    animation: none;
   }
 
-  /* El hover NO sirve en móvil */
   .login-container:hover {
     height: auto;
   }
 
-  /* Título fijo arriba */
   .login-title {
     position: relative;
-    top: 0;
-    left: 0;
     transform: none;
     margin-bottom: 20px;
     font-size: 24px;
   }
 
-  /* Mostrar contenido siempre */
   .login-content {
     opacity: 1;
     height: auto;
@@ -56,37 +203,9 @@
     overflow: visible;
   }
 
-  /* Inputs */
-  .input-group input {
-    font-size: 16px;
-    padding: 12px 14px;
-  }
-
-  .login-btn {
-    font-size: 16px;
-    padding: 14px 0;
-  }
-
-  /* Links */
   .links {
     flex-direction: column;
-    gap: 10px;
     align-items: center;
-  }
-
-  /* Texto animado */
-  .texto-animado {
-    font-size: 2.5rem;
-    top: 15px;
-  }
-
-  /* Menú */
-  .menu-principal {
-    flex-direction: column;
-  }
-
-  .submenu {
-    position: static;
-    box-shadow: none;
+    gap: 10px;
   }
 }
