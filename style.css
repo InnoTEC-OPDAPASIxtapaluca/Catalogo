@@ -14,7 +14,7 @@
 }
 
 /* =========================
-   RESET GENERAL
+   RESET
    ========================= */
 html, body {
   margin: 0;
@@ -43,7 +43,7 @@ html, body {
 }
 
 /* =========================
-   ELEMENTOS DECORATIVOS
+   DECORACIÓN
    ========================= */
 .imagen-fondo-central {
   position: fixed;
@@ -84,7 +84,7 @@ html, body {
 }
 
 /* =========================
-   LOGIN
+   LOGIN (PC)
    ========================= */
 .login-container {
   width: 350px;
@@ -140,65 +140,12 @@ html, body {
   margin-top: 20px;
 }
 
-.input-group {
-  width: 100%;
-  margin-bottom: 20px;
-}
-
-.input-group input {
-  width: 100%;
-  padding: 14px;
-  background: #222;
-  border: 1.5px solid #333;
-  border-radius: 8px;
-  color: white;
-  font-size: 16px;
-}
-
-.input-group input:focus {
-  border-color: #D94A3F;
-  outline: none;
-}
-
-.login-btn {
-  width: 100%;
-  padding: 14px;
-  background: #D94A3F;
-  border: none;
-  color: white;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
-  box-shadow: 0 0 8px #D94A3F;
-}
-
-.login-btn:hover {
-  background: #A6192E;
-}
-
-.links {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  margin-top: 20px;
-}
-
-.links a {
-  color: #aaa;
-  text-decoration: none;
-  font-size: 14px;
-}
-
-.links a:hover {
-  color: #fff;
-}
-
 /* =========================
    📱 VISTA MÓVIL
    ========================= */
 @media (max-width: 768px) {
 
-  /* Logos juntos sin afectar login */
+  /* Logos separados */
   .logo-superior,
   .imagen-inferior {
     position: fixed;
@@ -212,59 +159,54 @@ html, body {
   }
 
   .imagen-inferior {
-    left: 110px;
-    right: auto;
+    right: 10px;
+    left: auto;
     bottom: auto;
   }
 
-  /* Fondo */
-  .imagen-fondo-central {
-    width: 95vw;
-    opacity: 0.25;
-  }
-
-  /* Espacio para logos */
+  /* Espacio superior */
   .contenido-central {
     width: 100%;
     padding: 20px;
     margin-top: 90px;
   }
 
-  /* Login transparente */
+  /* Login cerrado por defecto */
   .login-container {
     width: 100%;
-    height: auto;
+    height: 60px;
     animation: none;
     background: rgba(0, 0, 0, 0.2);
     border-color: rgba(217, 74, 63, 0.6);
   }
 
-  .login-box {
-    background: rgba(17, 17, 17, 0.2);
-  }
-
-  /* Quitar hover en móvil */
-  .login-container:hover {
+  /* 🔑 Se abre SOLO al tocar */
+  .login-container:focus-within {
     height: auto;
   }
 
-  .login-title {
+  /* Contenido oculto */
+  .login-content {
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+  }
+
+  /* Mostrar contenido al hacer tap */
+  .login-container:focus-within .login-content {
+    opacity: 1;
+    height: auto;
+    margin-top: 20px;
+  }
+
+  .login-container:focus-within .login-title {
     position: relative;
     transform: none;
     margin-bottom: 20px;
     font-size: 24px;
   }
 
-  .login-content {
-    opacity: 1;
-    height: auto;
-    margin-top: 20px;
-    overflow: visible;
-  }
-
-  .links {
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
+  .login-box {
+    background: rgba(17, 17, 17, 0.2);
   }
 }
