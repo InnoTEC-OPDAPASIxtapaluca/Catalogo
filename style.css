@@ -22,7 +22,7 @@ html, body {
 
 .seccion-inicial {
   position: relative;
-  background-image: url('/IXTEC digital OFICIAL/IMAGENES/FONDONUBES.png');
+  background-image: url('./IMAGENES/FONDONUBES.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
